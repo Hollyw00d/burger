@@ -15,7 +15,11 @@ var orm = {
             console.log(result);
         });
     },
-    updateOne: function() {
-
+    updateOne: function(tableName, burgerId) {
+        var queryString = "UPDATE ?? SET devoured = true WHERE = ?";
+        connection.query(queryString, [tableName, burgerId] ,function(err, result) {
+            if(err) throw err;
+            console.log(result);
+        });
     }
 };
