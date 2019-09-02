@@ -12,7 +12,7 @@ $(document).ready(function() {
                 console.log(response);
             })
             .fail(function(xhr, status, error) {
-                console.log(`Error: ${xhr.responseText}`);
+                console.log(`Error: ${xhr.status}`);
             });
 
     });
