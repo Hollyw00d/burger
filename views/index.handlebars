@@ -1,7 +1,11 @@
-{{#each burgers}}
-
-{{burger_name}} 1
-
-{{/each}}
-
-blah
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <ol>
+            {{#each burgers}}
+                <li>{{burger_name}}</li>
+            {{/each}}
+            </ol>
+        </div>
+    </div>
+</div>
