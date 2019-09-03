@@ -12,4 +12,8 @@ router.get('/', function(req, res) {
     });
 });
 
+router.put('/api/burgerdevoured', function(req, res) {
+    console.log('PUT test!');
+});
+
 module.exports = router;

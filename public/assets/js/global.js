@@ -7,7 +7,11 @@ $(document).ready(function() {
             firstBurgerNotDevouredId
         };
 
-        $.post('/api/burgerdevoured', firstBurgerNotDevouredIdObj)
+        $.ajax({
+            url: '/api/burgerdevoured', 
+            type: 'PUT',
+            data  : firstBurgerNotDevouredIdObj
+        })
             .done(function(response) {
                 console.log(response);
             })

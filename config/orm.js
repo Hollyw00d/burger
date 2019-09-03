@@ -8,18 +8,18 @@ var orm = {
             cb(result);
         });
     },
-    insertOne: function(tableName, burgerName) {
+    insertOne: function(tableName, burgerId, cb) {
         var queryString = "INSERT INTO ?? (burger_name, devoured) VALUES (?, false);";
-        connection.query(queryString, [tableName, burgerName], function(err, result) {
+        connection.query(queryString, [tableName, burgerId], function(err, result) {
             if(err) throw err;
-            console.log(result);
+            cb(result);
         });
     },
-    updateOne: function(tableName, burgerId) {
-        var queryString = "UPDATE ?? SET devoured = true WHERE = ?";
+    updateDevouredBurger: function(tableName, burgerId, cb) {
+        var queryString = "UPDATE ?? SET devoured = true WHERE id = ?";
         connection.query(queryString, [tableName, burgerId] ,function(err, result) {
             if(err) throw err;
-            console.log(result);
+            cb(result);
         });
     }
 };

@@ -5,6 +5,15 @@ var burgerModel = {
         orm.selectAll('burgers', function(res) {
             cb(res);
         });
+    },
+    updateDevouredBurger: function(cb) {
+        //var body = req.body;
+        var body = {
+            id: 1
+        };
+        orm.updateOne('burgers', {id: 1}, function(res) {
+            cb(res);
+        });
     }
 };
 
