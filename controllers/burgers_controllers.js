@@ -18,6 +18,15 @@ router.get('/', function(req, res) {
     });
 });
 
+router.post('/api/addnewburger/:name', function(req, res) {
+    
+    //console.log('burger_controllers burgerName: ', burgerName);
+
+    burgerModel.addBurger(req, function(data) {
+        res.status(200).end();
+    });
+});
+
 router.put('/api/burgerdevoured/:id', function(req, res) {
     burgerModel.updateDevouredBurger(req, function(data) {
         res.status(200).end();

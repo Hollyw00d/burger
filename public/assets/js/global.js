@@ -1,4 +1,18 @@
 $(document).ready(function() {
+    // Add burger
+    $('#add-burger').on('click', function() {
+        var addBurgerInput = $('#addBurgerInput').val();
+        console.log(addBurgerInput);
+
+        $.post(`/api/addnewburger/${addBurgerInput}`)
+            .done(function(data) {
+                console.log(data);
+            })
+            .fail(function(xhr, status, error) {
+                console.log(`Error: ${xhr.status}`);
+            });
+    });
+
     // Devour burger
     $('#devour-burger').on('click', function() {
         var firstBurgerNotDevouredId = +($('li').first().attr('data-id'));
@@ -8,13 +22,12 @@ $(document).ready(function() {
             type: 'PUT',
             data  : firstBurgerNotDevouredId
         })
-            .done(function(response) {
-                console.log(response);
+            .done(function(data) {
+                console.log(data);
                 location.reload();
             })
             .fail(function(xhr, status, error) {
                 console.log(`Error: ${xhr.status}`);
             });
-
     });
 });

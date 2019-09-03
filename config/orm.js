@@ -8,9 +8,16 @@ var orm = {
             cb(result);
         });
     },
-    insertOne: function(tableName, burgerId, cb) {
+    selectAllDevoured: function(tableName, cb) {
+        var queryString = "SELECT * FROM ?? WHERE devoured = true;";
+        connection.query(queryString, [tableName], function(err, result) {
+            if(err) throw err;
+            cb(result);
+        });
+    },
+    insertOne: function(tableName, burgerName, cb) {
         var queryString = "INSERT INTO ?? (burger_name, devoured) VALUES (?, false);";
-        connection.query(queryString, [tableName, burgerId], function(err, result) {
+        connection.query(queryString, [tableName, burgerName], function(err, result) {
             if(err) throw err;
             cb(result);
         });
@@ -21,14 +28,7 @@ var orm = {
             if(err) throw err;
             cb(result);
         });
-    },
-    selectAllDevoured: function(tableName, cb) {
-        var queryString = "SELECT * FROM ?? WHERE devoured = true;";
-        connection.query(queryString, [tableName], function(err, result) {
-            if(err) throw err;
-            cb(result);
-        });
-    },
+    }
 };
 
 module.exports = orm;
