@@ -12,6 +12,9 @@ app.set("view engine", "handlebars");
 // Serve static files
 app.use(express.static('public'));
 
+// Serve partials
+
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

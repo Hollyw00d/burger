@@ -4,16 +4,24 @@ var router = express.Router();
 var burgerModel = require('../models/burger');
 
 router.get('/', function(req, res) {
-    burgerModel.displayAll(function(data) {
-        var burgerObject = {
-            burgers: data
-        };
-        res.render('index', burgerObject);
+    burgerModel.displayAllNotDevoured(function(dataNotDevoured) {
+
+        burgerModel.displayAllDevoured(function(dataDevoured) {
+            var burgerObject = {
+                burgersNotDevoured: dataNotDevoured,
+                burgersDevoured: dataDevoured
+            };
+
+            console.log('burger_controllers.js: ', burgerObject);
+            res.render('index', burgerObject); 
+        });
     });
 });
 
-router.put('/api/burgerdevoured', function(req, res) {
-    console.log('PUT test!');
+router.put('/api/burgerdevoured/:id', function(req, res) {
+    burgerModel.updateDevouredBurger(req, function(data) {
+        res.status(200).end();
+    });
 });
 
 module.exports = router;

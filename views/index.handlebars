@@ -1,14 +1,24 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
+            {{#if burgersNotDevoured}}
+                <h2 class="h4">Burgers Not Devoured</h2>
+            {{/if}}
             <ol>
-            {{#each burgers}}
-                <li data-id="{{id}}">{{burger_name}}</li>
-            {{/each}}
+                {{#each burgersNotDevoured}}
+                    <li data-id="{{id}}">{{burger_name}}</li>
+                {{/each}}
             </ol>
         </div>
         <div class="col-lg-6">
-            Coming soon!
+            {{#if burgersDevoured}}
+                <h2 class="h4">Burgers Devoured</h2>
+            {{/if}}
+            <ol>
+                {{#each burgersDevoured}}
+                    <li data-id="{{id}}">{{burger_name}}</li>
+                {{/each}}
+            </ol>
         </div>
     </div>
     <div class="row p-4">

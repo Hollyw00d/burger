@@ -1,18 +1,19 @@
 var orm = require('../config/orm');
 
 var burgerModel = {
-    displayAll: function(cb) {
-        orm.selectAll('burgers', function(res) {
+    displayAllNotDevoured: function(cb) {
+        orm.selectAllNotDevoured('burgers', function(res) {
             cb(res);
         });
     },
-    updateDevouredBurger: function(cb) {
-        //var body = req.body;
-        var body = {
-            id: 1
-        };
-        orm.updateOne('burgers', {id: 1}, function(res) {
+    displayAllDevoured: function(cb) {
+        orm.selectAllDevoured('burgers', function(res) {
             cb(res);
+        });
+    },
+    updateDevouredBurger: function(req, id) {
+        var burgerId = req.params.id;
+        orm.updateOne('burgers', burgerId, function(res) {
         });
     }
 };

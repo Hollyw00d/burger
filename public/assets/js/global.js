@@ -1,19 +1,16 @@
 $(document).ready(function() {
     // Devour burger
-    $('#devour-burger').on('click', function(e) {
-        e.preventDefault();
+    $('#devour-burger').on('click', function() {
         var firstBurgerNotDevouredId = +($('li').first().attr('data-id'));
-        var firstBurgerNotDevouredIdObj = {
-            firstBurgerNotDevouredId
-        };
-
+       
         $.ajax({
-            url: '/api/burgerdevoured', 
+            url: `/api/burgerdevoured/${firstBurgerNotDevouredId}`, 
             type: 'PUT',
-            data  : firstBurgerNotDevouredIdObj
+            data  : firstBurgerNotDevouredId
         })
             .done(function(response) {
                 console.log(response);
+                location.reload();
             })
             .fail(function(xhr, status, error) {
                 console.log(`Error: ${xhr.status}`);
