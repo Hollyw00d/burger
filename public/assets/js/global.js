@@ -6,9 +6,8 @@ $(document).ready(function() {
         console.log(`/api/addnewburger/${addBurgerInput}`);
 
         $.post(`/api/addnewburger/${addBurgerInput}`)
-            .then(function(data, error) {
-                console.log('blah');
-                if(error) throw error;
+            .then(function(status) {
+                console.dir(status)
                 location.reload();
             });
 
@@ -23,9 +22,12 @@ $(document).ready(function() {
             type: 'PUT',
             data  : firstBurgerNotDevouredId
         })
-            .then(function(data) {
-                console.log('blah');
+            .then(function(status) {
+                console.log(status);
                 location.reload();
+                // find the element data-id
+                // take the li with data-id whatever off
+                // add the li to the second list wherever you want
             });
     });
 });

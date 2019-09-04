@@ -13,14 +13,15 @@ var burgerModel = {
     },
     addBurger: function(req, cb) {
         var burgerName = req.params.name;
-        console.log(burgerName);
         
         orm.insertOne('burgers', burgerName, function() {
+            cb(201)
         });
     },
-    updateDevouredBurger: function(req, id) {
+    updateDevouredBurger: function(req, cb) {
         var burgerId = req.params.id;
         orm.updateOne('burgers', burgerId, function(res) {
+            cb(202)
         });
     }
 };

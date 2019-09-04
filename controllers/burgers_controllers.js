@@ -19,14 +19,14 @@ router.get('/', function(req, res) {
 });
 
 router.post('/api/addnewburger/:name', function(req, res) {
-    burgerModel.addBurger(req, function(data) {
-        res.json();
+    burgerModel.addBurger(req, function(status) {
+        res.sendStatus(status);
     });
 });
 
 router.put('/api/burgerdevoured/:id', function(req, res) {
-    burgerModel.updateDevouredBurger(req, function(data) {
-        res.sendStatus(200);
+    burgerModel.updateDevouredBurger(req, function(status) {
+        res.sendStatus(status);
     });
 });
 
