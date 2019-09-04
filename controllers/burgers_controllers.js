@@ -12,24 +12,21 @@ router.get('/', function(req, res) {
                 burgersDevoured: dataDevoured
             };
 
-            console.log('burger_controllers.js: ', burgerObject);
+
             res.render('index', burgerObject); 
         });
     });
 });
 
 router.post('/api/addnewburger/:name', function(req, res) {
-    
-    //console.log('burger_controllers burgerName: ', burgerName);
-
     burgerModel.addBurger(req, function(data) {
-        res.status(200).end();
+        res.json();
     });
 });
 
 router.put('/api/burgerdevoured/:id', function(req, res) {
     burgerModel.updateDevouredBurger(req, function(data) {
-        res.status(200).end();
+        res.sendStatus(200);
     });
 });
 

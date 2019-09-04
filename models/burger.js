@@ -14,8 +14,7 @@ var burgerModel = {
     addBurger: function(req, cb) {
         var burgerName = req.params.name;
         console.log(burgerName);
-
-        var gardenBurger = 'Garden Burger';
+        
         orm.insertOne('burgers', burgerName, function() {
         });
     },

@@ -2,15 +2,16 @@ $(document).ready(function() {
     // Add burger
     $('#add-burger').on('click', function() {
         var addBurgerInput = $('#addBurgerInput').val();
-        console.log(addBurgerInput);
+
+        console.log(`/api/addnewburger/${addBurgerInput}`);
 
         $.post(`/api/addnewburger/${addBurgerInput}`)
-            .done(function(data) {
-                console.log(data);
-            })
-            .fail(function(xhr, status, error) {
-                console.log(`Error: ${xhr.status}`);
+            .then(function(data, error) {
+                console.log('blah');
+                if(error) throw error;
+                location.reload();
             });
+
     });
 
     // Devour burger
@@ -22,12 +23,9 @@ $(document).ready(function() {
             type: 'PUT',
             data  : firstBurgerNotDevouredId
         })
-            .done(function(data) {
-                console.log(data);
+            .then(function(data) {
+                console.log('blah');
                 location.reload();
-            })
-            .fail(function(xhr, status, error) {
-                console.log(`Error: ${xhr.status}`);
             });
     });
 });
