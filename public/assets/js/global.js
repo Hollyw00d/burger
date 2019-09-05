@@ -6,11 +6,9 @@ $(document).ready(function() {
         console.log(`/api/addnewburger/${addBurgerInput}`);
 
         $.post(`/api/addnewburger/${addBurgerInput}`)
-            .then(function(status) {
-                console.dir(status)
+            .then(function() {
                 location.reload();
             });
-
     });
 
     // Devour burger
@@ -22,12 +20,20 @@ $(document).ready(function() {
             type: 'PUT',
             data  : firstBurgerNotDevouredId
         })
-            .then(function(status) {
-                console.log(status);
-                location.reload();
-                // find the element data-id
-                // take the li with data-id whatever off
-                // add the li to the second list wherever you want
-            });
+        .then(function() {
+            location.reload();
+        });
+    });
+
+    // Delete all burgers 
+    $('#delete').on('click', function() {
+
+        $.ajax({
+            url: '/api/burger/delete/all',
+            type: 'DELETE'
+        })
+        .then(function() {
+            location.reload();
+        });
     });
 });

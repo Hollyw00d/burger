@@ -15,13 +15,18 @@ var burgerModel = {
         var burgerName = req.params.name;
         
         orm.insertOne('burgers', burgerName, function() {
-            cb(201)
+            cb(201);
         });
     },
     updateDevouredBurger: function(req, cb) {
         var burgerId = req.params.id;
         orm.updateOne('burgers', burgerId, function(res) {
-            cb(202)
+            cb(202);
+        });
+    },
+    deleteAllBurgers: function(cb) {
+        orm.deleteAll('burgers', function(res) {
+            cb(204);
         });
     }
 };

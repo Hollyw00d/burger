@@ -28,6 +28,13 @@ var orm = {
             if(err) throw err;
             cb(result);
         });
+    },
+    deleteAll: function(tableName, cb) {
+        var queryString = "DELETE FROM ??";
+        connection.query(queryString, [tableName], function(err, result) {
+            if(err) throw err;
+            cb(result);
+        });
     }
 };
 

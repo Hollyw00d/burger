@@ -30,4 +30,10 @@ router.put('/api/burgerdevoured/:id', function(req, res) {
     });
 });
 
+router.delete('/api/burger/delete/all', function(req, res) {
+    burgerModel.deleteAllBurgers(function(status) {
+        res.sendStatus(status);
+    });
+});
+
 module.exports = router;
