@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            {{#if burgersNotDevoured}}
+                <h2 class="h4">Burgers Not Devoured</h2>
+            {{/if}}
+            <ol>
+                {{#each burgersNotDevoured}}
+                    <li data-id="{{id}}">{{burger_name}}</li>
+                {{/each}}
+            </ol>
+        </div>
+        <div class="col-lg-6">
+            {{#if burgersDevoured}}
+                <h2 class="h4">Burgers Devoured</h2>
+            {{/if}}
+            <ol>
+                {{#each burgersDevoured}}
+                    <li data-id="{{id}}">{{burger_name}}</li>
+                {{/each}}
+            </ol>
+        </div>
+    </div>
+    <div class="row p-4">
+        <div class="col-lg-12">
+            <p>
+                <input class="w-100" name="addBurgerInput" id="addBurgerInput" rows="5" placeholder="Add burger">            
+            </p>    
+            <p>
+                <button type="submit" class="btn btn-success btn-lg btn-block" id="add-burger">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    Add Burger
+                </button>
+            </p>
+            <p class="h-2">
+                <button type="submit" class="btn btn-warning btn-lg btn-block" id="devour-burger">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    Devour Burger
+                </button>
+            </p>
+            <p class="h-2">
+                <button type="submit" class="btn btn-danger btn-lg btn-block" id="delete">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    Delete All Burgers
+                </button>
+            </p>
+        </div>
+    </div>
+</div>
